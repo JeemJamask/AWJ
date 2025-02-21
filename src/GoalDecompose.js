@@ -54,8 +54,7 @@ const GoalDecompose = () => {
                     <div className={`circle ${currentQuestion >= 1 ? "active" : ""}`} />
                     <div className={`line ${currentQuestion >= 2 ? "active" : ""}`} />
                     <div className={`circle ${currentQuestion >= 2 ? "active" : ""}`} />
-                    <div className={`line ${currentQuestion >= 3 ? "active" : ""}`} />
-                    <div className={`circle ${currentQuestion === 3 ? "active" : ""}`} />
+
                 </div>
 
                 {currentQuestion === 1 && (
@@ -82,22 +81,11 @@ const GoalDecompose = () => {
                         />
                     </div>
                 )}
-                {currentQuestion === 3 && (
-                    <div className="question-box">
-                        <label>الميزانية المخصصة للمشروع: <span className="required">*</span></label>
-                        <input
-                            type="text"
-                            name="projBudget"
-                            value={formData.projBudget}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                )}
+             
 
             
                 <div className="navigation-buttons">
-                    {currentQuestion < 3 ? (
+                    {currentQuestion < 2 ? (
                         <button type="button" className="next-btn" onClick={handleNext}>
                             التالي
                         </button>

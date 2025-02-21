@@ -99,6 +99,7 @@
 
 .goal-decomposing-page .question-box input,
 .goal-decomposing-page .question-box select {
+  direction: rtl;
   bottom: 200px;
   position: absolute;
   left: 50px;
