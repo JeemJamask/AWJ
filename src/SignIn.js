@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './signin.css';
 import AWJLOGO from "./assets/AWJLOGO.svg";
 import SideSqrs from "./assets/SideSqrs.svg";
@@ -8,21 +9,69 @@ const SignIn = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [otp, setOtp] = useState('');
     const [isOtpSent, setIsOtpSent] = useState(false);
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    const handleSendOtp = (e) => {
+
+    // Send OTP function
+    const handleSendOtp = async (e) => {
         e.preventDefault();
-        // Simulate sending OTP
-        alert(`OTP sent to ${phoneNumber}`);
-        setIsOtpSent(true);
+        setError('');
+
+        try {
+            const response = await axios.post(
+                "https://api.authentica.sa/api/v1/send-otp",
+                {
+                    phone: phoneNumber,
+                    method: "whatsapp"
+                },
+                {
+                    headers: {
+                        "X-Authorization": "$2y$10$fsNNFy7nluAD0ODvdp2t/u91Z6kypZ8PT6mKQO3Pi5/Dl/W9Ek/Me", // Replace with your actual API Key
+                        "Content-Type": "application/json"
+                    }
+                }
+            );
+
+            console.log("API Response:", response.data);
+
+            if (response.data.success) {
+                alert(`OTP sent to ${phoneNumber}`);
+                setIsOtpSent(true);
+            } else {
+                setError(response.data.message || "Failed to send OTP. Please try again.");
+            }
+        } catch (err) {
+            console.error("OTP Send Error:", err.response?.data || err.message);
+            setError(`Error: ${err.response?.data?.message || "Check API Key & Phone Format"}`);
+        }
     };
 
-    const handleVerifyOtp = (e) => {
-        e.preventDefault();
-        // Simulate OTP verification
-        alert(`OTP ${otp} verified!`);
-        navigate('/dashboard');
+    const handleVerifyOtp = async (phoneNumber, otp) => {
+        try {
+            const response = await axios.post(
+                'https://api.authentica.sa/api/v1/verify-otp',
+                {
+                    phone: phoneNumber,
+                    otp: otp,
+                },
+                {
+                    headers: {
+                        'X-Authorization': '$2y$10$fsNNFy7nluAD0ODvdp2t/u91Z6kypZ8PT6mKQO3Pi5/Dl/W9Ek/Me',  // Replace with your actual API key
+                    },
+                }
+            );
+
+            if (response.data.success) {
+                console.log('OTP verified successfully');
+            } else {
+                console.error('OTP verification failed: ', response.data.message);
+            }
+        } catch (error) {
+            console.error('Error verifying OTP:', error);
+        }
     };
+
 
     return (
         <div className="sign-in-page">
@@ -34,6 +83,7 @@ const SignIn = () => {
             </div>
             <div className="sign-in-box">
                 <h1>تسجيل الدخول</h1>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
                 <form>
                     {!isOtpSent ? (
                         <>
@@ -69,12 +119,10 @@ const SignIn = () => {
                         </>
                     )}
                 </form>
-
             </div>
             <p className="login-link3">
                 ليس لديك حساب؟ <a href="/create-account">سجل الآن</a>
             </p>
-
         </div>
     );
 };
