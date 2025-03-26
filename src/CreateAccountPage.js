@@ -4,6 +4,9 @@ import "./CA.css";
 import BlueBox from "./assets/BlueBox.svg";
 import RedBlueBox from "./assets/RedBlueBox.svg";
 import AWJLOGO from "./assets/AWJLOGO.svg";
+import { collection, getDocs, doc, setDoc } from "firebase/firestore";
+import { db } from "./firebase";
+
 
 const CreateAccountPage = () => {
     const [formData, setFormData] = useState({
@@ -38,7 +41,7 @@ const CreateAccountPage = () => {
         }
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (formData.termsAccepted) {
             // Check for missing required fields
             if (
@@ -53,16 +56,85 @@ const CreateAccountPage = () => {
             ) {
                 alert("يرجى ملء جميع الحقول المطلوبة");
             } else {
-                // Check if passwords match
+                // Check if passwords and emails match
                 if (formData.password !== formData.confirmPassword) {
                     alert("كلمات السر غير متطابقة");
                 } else if (formData.email !== formData.confirmEmail) {
                     alert("البريد الإلكتروني غير متطابق");
                 } else {
-                    if (formData.companyRegistered === true) {
-                        navigate("/dashboard");
-                    } else {
-                        navigate("/create-company-account");
+                    try {
+                        // Get all existing user IDs
+                        const usersSnapshot = await getDocs(collection(db, "User"));
+                        const ids = usersSnapshot.docs.map(doc => doc.id);
+
+                        const existingNumbers = ids
+                            .map(id => {
+                                const match = id.match(/^u(\d{3})$/);
+                                return match ? parseInt(match[1]) : null;
+                            })
+                            .filter(n => n !== null)
+                            .sort((a, b) => a - b);
+
+                        let nextNumber = 1;
+                        for (let i = 0; i < existingNumbers.length; i++) {
+                            if (existingNumbers[i] !== nextNumber) break;
+                            nextNumber++;
+                        }
+
+                        const nextId = `u${String(nextNumber).padStart(3, "0")}`;
+                        localStorage.setItem("userId", nextId);
+
+
+                        // If the user stores his phone number in +966 format it will be stored in 0.. format in the database (needed for sign in)
+                        const normalizedPhone = formData.phoneNumber.startsWith("+966")
+                            ? "0" + formData.phoneNumber.slice(4)
+                            : formData.phoneNumber;
+
+                        const userType = formData.companyRegistered ? "User" : "Manager";
+
+                        // find the company document based on the entered SecurityKey
+
+                        let companyRef = null;
+
+                        if (formData.companyRegistered && formData.securityKey) {
+                            const companiesSnapshot = await getDocs(collection(db, "Company"));
+                            const matchedDoc = companiesSnapshot.docs.find(doc =>
+                                doc.data().SecurityKey === formData.securityKey
+                            );
+
+                            if (matchedDoc) {
+                                companyRef = doc(db, "Company", matchedDoc.id); // reference to the company doc
+                            } else {
+                                alert("رمز الأمان غير صحيح");
+                                return;
+                            }
+                        }
+
+                        // Save user in Firestore
+                        const docRef = doc(db, "User", nextId);
+                        await setDoc(docRef, {
+                            FirstName: formData.firstName,
+                            LastName: formData.lastName,
+                            Email: formData.email,
+                            Password: formData.password,
+                            PhoneNumber: normalizedPhone,
+                            CompanyID: companyRef,
+                            UserType: userType,
+                        });
+
+                        // Store UserID locally 
+                        localStorage.setItem("userId", nextId);
+
+                        if (formData.companyRegistered === true) {
+                            navigate("/dashboard");
+                        } else {
+                            navigate("/create-company-account");
+                        }
+
+
+                    } catch (error) {
+                        console.error("Error saving user:", error);
+                        alert("حدث خطأ أثناء حفظ الحساب. حاول مرة أخرى.");
                     }
                 }
             }
@@ -70,6 +142,7 @@ const CreateAccountPage = () => {
             alert("يجب الموافقة على الشروط والأحكام");
         }
     };
+
 
     const handleSecurityKeySubmit = () => {
         if (formData.securityKey.length === 5) {
