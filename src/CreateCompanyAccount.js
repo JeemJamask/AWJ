@@ -4,6 +4,8 @@ import "./CA.css";
 import BlueBox from "./assets/BlueBox.svg";
 import RedBlueBox from "./assets/RedBlueBox.svg";
 import AWJLOGO from "./assets/AWJLOGO.svg";
+import {collection, getDocs, doc, setDoc, query, where, updateDoc, getDoc,} from "firebase/firestore";
+import { db } from "./firebase";
 
 const CreateCompanyAccount = () => {
     const [formData, setFormData] = useState({
@@ -13,7 +15,7 @@ const CreateCompanyAccount = () => {
         employeeCount: "",
         termsAccepted: false,
     });
-
+ 
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -24,15 +26,81 @@ const CreateCompanyAccount = () => {
         });
     };
 
-    const handleSubmit = () => {
+    const generateUniqueSecurityKey = async () => {
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+        while (true) {
+            let key = "";
+            for (let i = 0; i < 5; i++) {
+                key += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+
+            // Check Firestore to ensure key is unique
+            const q = query(collection(db, "Company"), where("SecurityKey", "==", key));
+            const querySnapshot = await getDocs(q);
+
+            if (querySnapshot.empty) {
+                return key; // ✅ Unique key found
+            }
+            // If not unique, generate a new one
+        }
+    };
+
+
+    const handleSubmit = async () => {
         if (!formData.termsAccepted) {
             alert("يجب الموافقة على الشروط والأحكام");
             return; // Prevent form submission if terms are not accepted
         }
 
         if (formData.companyName && formData.companyDescription && formData.companyActivity && formData.employeeCount) {
-            // Ensure all required fields are filled
-            navigate("/dashboard");
+            try {
+                const securityKey = await generateUniqueSecurityKey();
+
+                const companiesSnapshot = await getDocs(collection(db, "Company"));
+                const ids = companiesSnapshot.docs.map(doc => doc.id);
+
+                const existingNumbers = ids
+                    .map(id => {
+                        const match = id.match(/^c(\d{3})$/);
+                        return match ? parseInt(match[1]) : null;
+                    })
+                    .filter(n => n !== null)
+                    .sort((a, b) => a - b);
+
+                let nextNumber = 1;
+                for (let i = 0; i < existingNumbers.length; i++) {
+                    if (existingNumbers[i] !== nextNumber) break;
+                    nextNumber++;
+                }
+
+                const nextCompanyId = `c${String(nextNumber).padStart(3, "0")}`;
+
+                await setDoc(doc(db, "Company", nextCompanyId), {
+
+                    CompDescription: formData.companyDescription,
+                    CompanyName: formData.companyName,
+                    CompanySize: Number(formData.employeeCount),
+                    Industry: formData.companyActivity,
+                    SecurityKey: securityKey,
+                    SecurityKeyCreatedAt: new Date(),
+                });
+
+                // Link the company to the user who was just created
+                const userId = localStorage.getItem("userId");
+                if (userId) {
+                    const userRef = doc(db, "User", userId);
+                    await updateDoc(userRef, {
+                        CompanyID: doc(db, "Company", nextCompanyId), // Store as Reference
+                    });
+                }
+
+                navigate("/dashboard");
+            } catch (error) {
+                console.error("Error adding company:", error);
+                alert("حدث خطأ أثناء حفظ بيانات الشركة.");
+            }
+
         } else {
             alert("يرجى ملء جميع الحقول المطلوبة");
         }
