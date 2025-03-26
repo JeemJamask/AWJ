@@ -4,9 +4,14 @@ import axios from 'axios';
 import './signin.css';
 import AWJLOGO from "./assets/AWJLOGO.svg";
 import SideSqrs from "./assets/SideSqrs.svg";
+import { db } from "./firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
+
+
 
 const SignIn = () => {
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [PhoneNumber, setPhoneNumber] = useState('');
     const [otp, setOtp] = useState('');
     const [isOtpSent, setIsOtpSent] = useState(false);
     const [error, setError] = useState('');
@@ -18,16 +23,41 @@ const SignIn = () => {
         e.preventDefault();
         setError('');
 
+        // Only accept +966 format
+        if (!/^\+9665\d{8}$/.test(PhoneNumber)) {
+            setError("+يرجى إدخال الرقم بصيغة 9665");
+            return;
+        }
+
         try {
+            const localPhone = "0" + PhoneNumber.slice(4);
+
+            const q = query(
+                collection(db, "User"),
+                where("PhoneNumber", "==", localPhone)
+            );
+
+            const querySnapshot = await getDocs(q);
+
+            // Save UserID locally
+            const userDoc = querySnapshot.docs[0];
+            localStorage.setItem("userId", userDoc.id);
+
+
+            if (querySnapshot.empty) {
+                setError("لم يتم العثور على المستخدم. يُرجى التحقق من رقم هاتفك أو إنشاء حساب.");
+                return;
+            }
+
             const response = await axios.post(
                 "https://api.authentica.sa/api/v1/send-otp",
                 {
-                    phone: phoneNumber,
+                    phone: PhoneNumber,
                     method: "whatsapp"
                 },
                 {
                     headers: {
-                        "X-Authorization": "$2y$10$fsNNFy7nluAD0ODvdp2t/u91Z6kypZ8PT6mKQO3Pi5/Dl/W9Ek/Me", // Replace with your actual API Key
+                        "X-Authorization": "$2y$10$fsNNFy7nluAD0ODvdp2t/u91Z6kypZ8PT6mKQO3Pi5/Dl/W9Ek/Me",
                         "Content-Type": "application/json"
                     }
                 }
@@ -36,40 +66,47 @@ const SignIn = () => {
             console.log("API Response:", response.data);
 
             if (response.data.success) {
-                alert(`OTP sent to ${phoneNumber}`);
+                alert(`OTP sent to ${PhoneNumber}`);
                 setIsOtpSent(true);
             } else {
                 setError(response.data.message || "Failed to send OTP. Please try again.");
             }
+
         } catch (err) {
             console.error("OTP Send Error:", err.response?.data || err.message);
             setError(`Error: ${err.response?.data?.message || "Check API Key & Phone Format"}`);
         }
     };
 
-    const handleVerifyOtp = async (phoneNumber, otp) => {
-        try {
-            const response = await axios.post(
-                'https://api.authentica.sa/api/v1/verify-otp',
-                {
-                    phone: phoneNumber,
-                    otp: otp,
-                },
-                {
-                    headers: {
-                        'X-Authorization': '$2y$10$fsNNFy7nluAD0ODvdp2t/u91Z6kypZ8PT6mKQO3Pi5/Dl/W9Ek/Me',  // Replace with your actual API key
-                    },
-                }
-            );
 
-            if (response.data.success) {
-                console.log('OTP verified successfully');
-            } else {
-                console.error('OTP verification failed: ', response.data.message);
-            }
-        } catch (error) {
-            console.error('Error verifying OTP:', error);
-        }
+    const handleVerifyOtp = async (phoneNumber, otp) => {
+        // the following code is just for development mode, it bypasses the otp veriication
+        console.log("Dev Mode: Skipping real OTP check");
+        alert("تم التحقق من الرمز بنجاح. سيتم تحويلك للوحة التحكم.");
+        navigate("/dashboard");
+        /*  try {
+              const response = await axios.post(
+                  'https://api.authentica.sa/api/v1/verify-otp',
+                  {
+                      phone: phoneNumber,
+                      otp: otp,
+                  },
+                  {
+                      headers: {
+                          'X-Authorization': '$2y$10$fsNNFy7nluAD0ODvdp2t/u91Z6kypZ8PT6mKQO3Pi5/Dl/W9Ek/Me',  // Replace with your actual API key
+                      },
+                  }
+              );
+  
+              if (response.data.success) {
+                  console.log('OTP verified successfully');
+                  navigate("/dashboard")
+              } else {
+                  console.error('OTP verification failed: ', response.data.message);
+              }
+          } catch (error) {
+              console.error('Error verifying OTP:', error);
+          } */
     };
 
 
@@ -92,7 +129,7 @@ const SignIn = () => {
                                 <input
                                     type="tel"
                                     name="phoneNumber"
-                                    value={phoneNumber}
+                                    value={PhoneNumber}
                                     onChange={(e) => setPhoneNumber(e.target.value)}
                                     placeholder="+966 5XXXXXXXX"
                                 />
@@ -115,7 +152,8 @@ const SignIn = () => {
                                 />
                             </label>
                             <br />
-                            <button onClick={handleVerifyOtp}>تأكيد الدخول</button>
+                            <button onClick={() => handleVerifyOtp(PhoneNumber, otp)}>تأكيد الدخول</button>
+
                         </>
                     )}
                 </form>
