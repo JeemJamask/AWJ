@@ -64,6 +64,37 @@ const DashboardPage = () => {
         }
     }, []);
 
+    useEffect(() => {
+        const fetchCompanyInfo = async () => {
+            const userId = localStorage.getItem("userId");
+            if (!userId) return;
+    
+            const userRef = doc(db, "User", userId);
+            const userSnap = await getDoc(userRef);
+    
+            if (userSnap.exists()) {
+                const userData = userSnap.data();
+                const companyRef = userData.CompanyID;
+    
+                if (companyRef?.id) {
+                    const companySnap = await getDoc(doc(db, "Company", companyRef.id));
+                    if (companySnap.exists()) {
+                        const data = companySnap.data();
+                        setCompanyInfo({
+                            members: data.CompanySize || "",
+                            securityCode: data.SecurityKey || "",
+                            description: data.CompDescription || "",
+                            field: data.Industry || ""
+                        });
+                    }
+                }
+            }
+        };
+    
+        fetchCompanyInfo();
+    }, []);
+    
+
     const projects = [
         { id: 1, name: "نظام إدارة المشاريع", duration: "6 أشهر", status: "قيد التنفيذ", goals: 5 },
         { id: 2, name: "تطبيق الصحة الذكية", duration: "4 أشهر", status: "مكتمل", goals: 8 },
@@ -95,12 +126,34 @@ const DashboardPage = () => {
         }));
     };
 
-    const handleEditClick = () => {
+    const handleEditClick = async () => {
         if (isEditing) {
-            alert("تم حفظ البيانات بنجاح!");
+            try {
+                const userId = localStorage.getItem("userId");
+                const userRef = doc(db, "User", userId);
+                const userSnap = await getDoc(userRef);
+    
+                if (userSnap.exists()) {
+                    const companyRef = userSnap.data().CompanyID;
+                    if (companyRef?.id) {
+                        await updateDoc(doc(db, "Company", companyRef.id), {
+                            CompanySize: Number(companyInfo.members), 
+                            SecurityKey: companyInfo.securityCode,
+                            CompDescription: companyInfo.description,
+                            Industry: companyInfo.field
+                        });
+                        alert("تم حفظ البيانات بنجاح!");
+                    }
+                }
+            } catch (error) {
+                console.error("خطأ أثناء تحديث معلومات الشركة:", error);
+                alert("حدث خطأ أثناء حفظ البيانات.");
+            }
         }
         setIsEditing(!isEditing);
     };
+    
+    
 
     const handleViewDetails = () => {
         navigate("/goal-decomposing-result");
