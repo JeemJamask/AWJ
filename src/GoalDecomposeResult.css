@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 .GD-result-page {
   text-align: center;
   font-family: "Tajawal", sans-serif;
@@ -42,14 +47,27 @@
 .GD-result-page .goal-section {
   position: relative;
   margin-top: 55px;
-  width: 500px;
+  width: 450px;
   height: 100px;
   background-color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
   border-radius: 25px;
   padding: 20px 30px;
-  left: 400px;
+  left: 700px;
   top: 40px;
+}
+
+.GD-result-page .consq-section {
+  position: relative;
+  margin-top: 55px;
+  width: 450px;
+  height: 100px;
+  background-color: #fff;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  padding: 20px 30px;
+  left: 150px;
+  top: -155px;
 }
 
 .GD-result-page h2 {
@@ -74,7 +92,7 @@
 }
 
 .GD-result-page .timeline-container {
-  margin-top: 150px;
+  margin-top: 60px;
   position: relative;
   direction: rtl;
   display: flex;

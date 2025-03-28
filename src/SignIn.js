@@ -6,7 +6,9 @@ import AWJLOGO from "./assets/AWJLOGO.svg";
 import SideSqrs from "./assets/SideSqrs.svg";
 import { db } from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
+import firebase from "./firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
+import { IoArrowBack } from 'react-icons/io5';
 
 
 
@@ -111,7 +113,10 @@ const SignIn = () => {
 
 
     return (
+
         <div className="sign-in-page">
+        <IoArrowBack className="back-arrow-n" onClick={() => navigate('/')} />
+
             <div>
                 <img className="Logo" alt="Logo" src={AWJLOGO} />
             </div>

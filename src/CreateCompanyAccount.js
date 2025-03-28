@@ -6,6 +6,7 @@ import RedBlueBox from "./assets/RedBlueBox.svg";
 import AWJLOGO from "./assets/AWJLOGO.svg";
 import {collection, getDocs, doc, setDoc, query, where, updateDoc, getDoc,} from "firebase/firestore";
 import { db } from "./firebase";
+import { IoArrowBack } from 'react-icons/io5';
 
 const CreateCompanyAccount = () => {
     const [formData, setFormData] = useState({
@@ -108,7 +109,7 @@ const CreateCompanyAccount = () => {
 
     return (
         <div className="create-account-page">
-
+        <IoArrowBack className="back-arrow-n" onClick={() => navigate(-1)} />
             <div className="logo-container">
                 <img className="Logo" alt="Logo" src={AWJLOGO} />
             </div>

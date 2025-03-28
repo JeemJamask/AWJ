@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 body {
   font-family: "DIN Next LT Arabic", sans-serif;
   overflow: auto;
@@ -120,6 +125,7 @@ body {
   top: 710px;
   width: 400px;
 }
+
 
 .home-page .text-wrapper {
   color: #ffffff;
@@ -423,6 +429,8 @@ body {
   width: 1561px;
 }
 
+
+
 .home-page .overlap-9 {
   background-image: url(/Users/macbookpro/my-react-app/src/assets/Intersect.png);
   background-size: 100% 100%;
@@ -441,21 +449,21 @@ body {
 }
 
 .hover-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+   height: 573px;
+  width: 1440px;
+  transform: translate(-2%, 50%);
   z-index: 10;
   pointer-events: none;
 }
 
-.hover-image img {
+/* .hover-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-}
+} */
 
 /* Fade in effect when hovering */
 .hover-image img {
@@ -634,10 +642,11 @@ body {
   position: absolute;
   top: 2090px;
 }
-.faq-section {
+/* .scroll2 {
   z-index: 10;
   position: relative;
-}
+} */
+
 .home-page .p {
   color: #ffffff;
   direction: rtl;
@@ -652,7 +661,7 @@ body {
   white-space: nowrap;
 }
 
-/* Common Button Styles */
+
 .home-page .button {
   all: unset;
   align-items: center;
@@ -734,3 +743,78 @@ button .text-wrapper12 {
   line-height: normal;
   text-align: center;
 }
+
+.clickable-text {
+    cursor: pointer; 
+    color: blue; 
+    z-index: 10; 
+    position: relative;
+    padding: 10px; 
+}
+
+.clickable-text {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clickable-text:hover {
+  color: #2a7fba;
+}
+
+
+section {
+  scroll-margin-top: 100px; /* Adjust based on your header height */
+}
+
+/* Navigation link styling */
+.clickable-text {
+  cursor: pointer;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.clickable-text:hover {
+  color: #2a7fba;
+}
+
+.clickable-text::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #2a7fba;
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.clickable-text:hover::after {
+  transform: scaleX(1);
+}
+/* Wrapper to allow smooth scrolling */
+.scroll {
+  z-index: 10;
+  scroll-snap-type: y mandatory; /* Enforces mandatory snapping when scrolling vertically */
+  overflow-y: scroll; /* Ensures vertical scrolling */
+  height: 100vh; /* Ensures the container fills the entire viewport */
+  display: flex;
+  flex-direction: column; /* Stacks children vertically */
+}
+
+/* Section settings */
+#partnersSection2, #faqSection2 {
+  scroll-snap-align: start; /* Aligns each section when scrolling */
+  width: 100%;
+  min-height: 100vh; /* Ensures sections take up the full height of the viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#faqSection2 {
+  padding-top: 20px; /* Optional space for content */
+  box-sizing: border-box; /* Includes padding in the width and height calculation */
+}
+

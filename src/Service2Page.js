@@ -5,6 +5,7 @@ import BlueBox from "./assets/BlueBox.svg";
 import RedBlueBox from "./assets/RedBlueBox.svg";
 import AWJLOGO from "./assets/AWJLOGO.svg";
 import BMICON from "./assets/BMICON.svg";
+import { IoArrowBack } from 'react-icons/io5';
 
 const Service1Page = () => {
     const navigate = useNavigate();

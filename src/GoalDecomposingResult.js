@@ -12,6 +12,9 @@ const GoalDecomposeResult = () => {
     const goal = "تحسين الأداء المؤسسي";
     const timeFrame = "6 شهور";
 
+    const consq = "تحسين الأداء المؤسسي";
+    
+
     const milestones = [
         { month: "شهر 1", description: "البحث والتخطيط" },
         { month: "شهر 2-3", description: "مرحلة التطوير" },
@@ -33,6 +36,10 @@ const GoalDecomposeResult = () => {
                 <h2>الهدف: <span className="highlighted-text">{goal}</span></h2>
                 <h2>زمن تحقيق الهدف: <span className="highlighted-text">{timeFrame}</span></h2>
             </div>
+            
+            <div className="consq-section">
+                <h2>المخاطر المحتملة:<span className="highlighted-text">{consq}</span></h2>
+            </div>
 
             <div className="timeline-section">
 
@@ -50,7 +57,7 @@ const GoalDecomposeResult = () => {
                     </div>
                 </div>
             </div>
-
+   
             <button className="back-btn" onClick={() => navigate("/dashboard")}>
                 <img className="LeftArrow" alt="LeftArrow" src={LeftArrow} />
                 <div className="text">لوحة القيادة</div>

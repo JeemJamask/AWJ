@@ -6,6 +6,7 @@ import RedBlueBox from "./assets/RedBlueBox.svg";
 import AWJLOGO from "./assets/AWJLOGO.svg";
 import { collection, getDocs, doc, setDoc } from "firebase/firestore";
 import { db } from "./firebase";
+import { IoArrowBack } from 'react-icons/io5';
 
 
 const CreateAccountPage = () => {
@@ -154,6 +155,7 @@ const CreateAccountPage = () => {
 
     return (
         <div className="create-account-page">
+        <IoArrowBack className="back-arrow-n" onClick={() => navigate('/services')} />
             <div className="logo-container">
                 <img className="Logo" alt="Logo" src={AWJLOGO} />
             </div>

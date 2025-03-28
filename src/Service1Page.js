@@ -5,13 +5,13 @@ import BlueBox from "./assets/BlueBox.svg";
 import RedBlueBox from "./assets/RedBlueBox.svg";
 import AWJLOGO from "./assets/AWJLOGO.svg";
 import GoalDecomposeIcon from "./assets/GoalDecomposeIcon.svg";
+import { IoArrowBack } from 'react-icons/io5';
 
 const Service1Page = () => {
     const navigate = useNavigate();
 
     return (
         <div className="service1-page">
- 
             <div className="logo-container">
                 <img className="Logo" alt="Logo" src={AWJLOGO} />
             </div>

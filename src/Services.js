@@ -4,6 +4,7 @@ import "./services.css";
 import BlueBox from "./assets/BlueBox.svg";
 import RedBlueBox from "./assets/RedBlueBox.svg";
 import AWJLOGO from "./assets/AWJLOGO.svg";
+import { IoArrowBack } from 'react-icons/io5';
 
 const Services = () => {
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ const Services = () => {
 
     return (
         <div className="services-page">
+            <IoArrowBack className="back-arrow-n" onClick={() => navigate('/')} />
             <div>
                 <img className="Logo" alt="Logo" src={AWJLOGO} />
             </div>

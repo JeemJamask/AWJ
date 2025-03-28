@@ -10,6 +10,10 @@ import GDIcon from "./assets/GDIcon.svg";
 import AWJwithName from "./assets/AWJwithName.svg";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase";
+import firebase from "./firebase";
+import { IoArrowBack } from 'react-icons/io5';
+
+
 
 const refreshSecurityKeyIfExpired = async (companyId) => {
     const companyRef = doc(db, "Company", companyId);
@@ -161,6 +165,7 @@ const DashboardPage = () => {
 
     return (
         <div className="dashboard-container">
+            <IoArrowBack className="back-arrow-n-d" onClick={() => navigate('/')} />
             <div className="top-nav">
                 <img className="AWJwithName" alt="AWJ" src={AWJwithName} />
                 <div className="profile-section">

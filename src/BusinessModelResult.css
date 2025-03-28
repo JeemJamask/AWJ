@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 .bm-result-page {
   text-align: center;
   font-family: "Tajawal", sans-serif;

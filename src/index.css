@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 /* Regular Font */
 @font-face {
     font-family: 'DIN Next LT Arabi';
