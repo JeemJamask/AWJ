@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.GD-result-page {
+  text-align: center;
+  font-family: "Tajawal", sans-serif;
+  padding: 20px;
+}
+
+.GD-result-page h1 {
+  direction: rtl;
+  font-size: 36px;
+  color: #2e3a59;
+  margin-top: 80px;
+}
+
+.SmallSqrs1 {
+  position: absolute;
+  top: -10px;
+  left: 0px;
+  width: 250px;
+}
+
+.GD-result-page .SmallSqrs2 {
+  position: absolute;
+  bottom: -1px;
+  right: -10px;
+  width: 350px;
+}
+
+.GD-result-page .LeftArrow {
+  position: relative;
+  right: 36px;
+  top: 10px;
+}
+
+.GD-result-page .Logo {
+  height: 70px;
+  right: 20px;
+  position: absolute;
+  top: 15px;
+  width: 70px;
+}
+
+.GD-result-page .goal-section {
+  position: relative;
+  margin-top: 55px;
+  width: 450px;
+  height: 100px;
+  background-color: #fff;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  padding: 20px 30px;
+  left: 700px;
+  top: 40px;
+}
+
+.GD-result-page .consq-section {
+  position: relative;
+  margin-top: 55px;
+  width: 450px;
+  height: 100px;
+  background-color: #fff;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  padding: 20px 30px;
+  left: 150px;
+  top: -155px;
+}
+
+.GD-result-page h2 {
+  font-size: 18px;
+  color: #1d3557;
+  text-align: center;
+}
+
+.GD-result-page .highlighted-text {
+  font-weight: 300;
+}
+
+.GD-result-page .timeline-section {
+  margin-top: 30px;
+  text-align: right;
+  direction: rtl;
+}
+
+.GD-result-page .timeline-section h3 {
+  font-size: 20px;
+  color: #333;
+}
+
+.GD-result-page .timeline-container {
+  margin-top: 60px;
+  position: relative;
+  direction: rtl;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.GD-result-page .timeline {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  position: relative;
+}
+
+.GD-result-page .timeline-item {
+  text-align: center;
+  position: relative;
+}
+
+.GD-result-page .timeline-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e63a46;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.GD-result-page .timeline-line {
+  position: absolute;
+  top: 14px;
+  left: 30px;
+  width: calc(100% - 60px);
+  height: 2px;
+  background-color: #3d5af1;
+  z-index: 1;
+}
+
+.GD-result-page .timeline-item p {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.timeline-item:last-child .timeline-line {
+  display: none;
+}
+
+.GD-result-page .back-btn {
+  font-family: "Tajawal-Regular", Helvetica;
+  position: relative;
+  right: 490px;
+  width: 150px;
+  height: 50px;
+  top: 100px;
+  background-color: #e63a46;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+.GD-result-page .back-btn:hover {
+  background-color: #234069;
+}

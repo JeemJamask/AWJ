@@ -1,0 +1,820 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  font-family: "DIN Next LT Arabic", sans-serif;
+  overflow: auto;
+}
+
+.home-page {
+  background-color: #f8f7f7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.home-page .div {
+  background-color: #f8f7f7;
+  width: 80%;
+  height: 80%;
+  margin: auto;
+}
+
+/* For small screens */
+@media (max-width: 768px) {
+  .home-page {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .home-page .div {
+    width: 95%;
+    height: auto;
+  }
+}
+
+.home-page .overlap {
+  height: 821px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1440px;
+}
+
+.home-page .intersect {
+  height: 768px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1440px;
+}
+
+.home-page .rectangle {
+  border: 0.75px solid;
+  border-color: #ffffff;
+  border-radius: 40px;
+  height: 82px;
+  left: 255px;
+  position: absolute;
+  top: 64px;
+  width: 930px;
+}
+
+.home-page .group {
+  height: 85px;
+  left: 1286px;
+  position: absolute;
+  top: 61px;
+  width: 80px;
+}
+
+.home-page .overlap-group {
+  height: 85px;
+  position: relative;
+}
+
+.home-page .rectangle-2 {
+  background-color: #ffffff;
+  height: 49px;
+  left: 7px;
+  position: absolute;
+  top: 17px;
+  width: 62px;
+}
+
+.home-page .logo {
+  height: 85px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 80px;
+}
+
+.home-page .rectangle-3 {
+  background-color: #f8f7f7;
+  border-radius: 50px 50px 0px 0px;
+  box-shadow: 0px 4px 5.9px 1px #1d355738;
+  height: 111px;
+  left: 54px;
+  position: absolute;
+  top: 710px;
+  width: 400px;
+}
+
+.home-page .rectangle-4 {
+  background-color: #f8f7f7;
+  border-radius: 50px 50px 0px 0px;
+  box-shadow: 0px 4px 5.9px 1px #1d355738;
+  height: 111px;
+  left: 1002px;
+  position: absolute;
+  top: 710px;
+  width: 400px;
+}
+
+.home-page .rectangle-5 {
+  background-color: #f8f7f7;
+  border-radius: 50px 50px 0px 0px;
+  box-shadow: 0px 4px 5.9px 1px #1d355738;
+  height: 111px;
+  left: 520px;
+  position: absolute;
+  top: 710px;
+  width: 400px;
+}
+
+
+.home-page .text-wrapper {
+  color: #ffffff;
+  direction: rtl;
+  font-size: 25px;
+  font-weight: 400px;
+  left: 403px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 380px;
+  width: 950px;
+}
+
+.home-page .text-wrapper-2 {
+  color: #ffffff;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  left: 920px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 95px;
+}
+
+.home-page .text-wrapper-3 {
+  color: #ffffff;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  left: 1059px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 95px;
+}
+
+.home-page .text-wrapper-1 {
+  color: #ffffff;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  left: 700px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 95px;
+}
+
+.home-page .text-wrapper-4 {
+  color: #ffffff;
+  direction: rtl;
+  font-family: "DIN Next LT Arabic", sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  left: 846px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 308px;
+  width: 505px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.home-page .text-wrapper-5 {
+  color: #e63a46;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 48px;
+  font-weight: 400;
+  left: 33px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 733px;
+  width: 443px;
+}
+
+.home-page .text-wrapper-6 {
+  color: #e63a46;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 48px;
+  font-weight: 400;
+  left: 985px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 734px;
+  width: 443px;
+}
+
+.home-page .text-wrapper-7 {
+  color: #e63a46;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 48px;
+  font-weight: 400;
+  left: 498px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 736px;
+  width: 443px;
+}
+
+.home-page .profile {
+  height: 57px;
+  left: 278px;
+  object-fit: cover;
+  position: absolute;
+  top: 78px;
+  width: 57px;
+}
+
+.home-page .overlap-wrapper {
+  height: 34px;
+  left: 60px;
+  position: absolute;
+  top: 90px;
+  width: 137px;
+}
+
+.home-page .overlap-3 {
+  height: 423px;
+  left: -16px;
+  position: absolute;
+  top: 1984px;
+  width: 1456px;
+}
+
+.home-page .rectangle-6 {
+  background-color: #f8f7f7;
+  border-radius: 50px;
+  box-shadow: 0px 0px 9.8px 1px #1d355738;
+  height: 224px;
+  left: 259px;
+  position: absolute;
+  top: 41px;
+  width: 953px;
+}
+
+.home-page .rectangle-7 {
+  background: linear-gradient(
+    180deg,
+    rgb(0, 38, 77) 0%,
+    rgb(43.21, 72.59, 129.62) 100%
+  );
+  box-shadow: 0px 4px 20px 10px #00000042;
+  height: 88px;
+  left: 0;
+  position: absolute;
+  top: 335px;
+  width: 1456px;
+}
+
+.home-page .rimberio {
+  height: 29px;
+  left: 818px;
+  object-fit: cover;
+  position: absolute;
+  top: 187px;
+  width: 29px;
+}
+
+.home-page .text-wrapper-9 {
+  color: #1d3557;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 48px;
+  font-weight: 400;
+  left: 916px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 124px;
+  width: 197px;
+}
+
+.home-page .m-logo {
+  height: 230px;
+  left: 662px;
+  object-fit: cover;
+  position: absolute;
+  top: 35px;
+  width: 230px;
+}
+
+.home-page .overlap-4 {
+  height: 30px;
+  left: 75px;
+  position: absolute;
+  top: 700px;
+  width: 400px;
+}
+
+.home-page .rectangle-8 {
+  background-color: #f8f7f7;
+  box-shadow: 0px 4px 5.9px 1px #1d355738;
+  height: 226px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 400px;
+}
+
+.home-page .overlap-group-wrapper {
+  height: 133px;
+  left: 136px;
+  position: absolute;
+  top: 180px;
+  width: 129px;
+}
+
+.home-page .overlap-5 {
+  height: 133px;
+  position: relative;
+}
+
+.home-page .overlap-6 {
+  height: 315px;
+  left: 925px;
+  position: absolute;
+  top: 700px;
+  width: 400px;
+}
+
+.home-page .rectangle-9 {
+  background-color: #f8f7f7;
+  box-shadow: 0px 4px 5.9px 1px #1d355738;
+  height: 235px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 400px;
+}
+
+.home-page .text-wrapper-11 {
+  color: #1d3557;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 32px;
+  font-weight: 400;
+  left: 27px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 24px;
+  width: 348px;
+}
+
+.home-page .div-wrapper {
+  height: 133px;
+  left: 122px;
+  position: absolute;
+  top: 182px;
+  width: 158px;
+}
+
+.home-page .overlap-7 {
+  height: 325px;
+  left: 500px;
+  position: absolute;
+  top: 700px;
+  width: 400px;
+}
+
+.image {
+  height: 325px;
+  width: 400px;
+  cursor: pointer;
+}
+
+.home-page .group-2 {
+  height: 152px;
+  left: 127px;
+  position: absolute;
+  top: 173px;
+  width: 148px;
+}
+
+.home-page .overlap-8 {
+  height: 152px;
+  position: relative;
+}
+
+.home-page .frame {
+  height: 573px;
+  left: -121px;
+  position: absolute;
+  top: 1216px;
+  width: 1561px;
+}
+
+
+
+.home-page .overlap-9 {
+  background-image: url(/Users/macbookpro/my-react-app/src/assets/Intersect.png);
+  background-size: 100% 100%;
+  height: 573px;
+  left: 121px;
+  position: absolute;
+  top: 0;
+  width: 1440px;
+}
+.ThreeIcons {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.ThreeIcons:hover {
+  transform: scale(1.1);
+}
+
+.hover-image {
+  position: relative;
+   height: 573px;
+  width: 1440px;
+  transform: translate(-2%, 50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* .hover-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+} */
+
+/* Fade in effect when hovering */
+.hover-image img {
+  opacity: 1;
+}
+
+.home-page .text-wrapper-13 {
+  color: #ffffff;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 50px;
+  font-weight: 700;
+  left: 200px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 110px;
+  width: 1000px;
+}
+
+.home-page .CopyRights {
+  background-color: #152c4b;
+  height: 60px;
+  left: 0;
+  position: absolute;
+  top: 3150px;
+  width: 1440px;
+}
+.home-page .image2 {
+  height: 533px;
+  left: 0;
+  position: absolute;
+  top: -60px;
+  width: 1440px;
+}
+
+.home-page .image3 {
+  height: 533px;
+  left: 0;
+  position: absolute;
+  top: 1550px;
+  width: 1440px;
+}
+
+.home-page .Rectangle60 {
+  height: 533px;
+  left: 0;
+  position: relative;
+  top: 1950px;
+  width: 1440px;
+  margin-bottom: 70px;
+}
+
+.home-page .Rectangle61 {
+  height: 300px;
+  left: -50px;
+  position: absolute;
+  top: 2000px;
+  width: 2500px;
+}
+
+.home-page .rectangle-11 {
+  background-color: #e63a46;
+  border-radius: 5px;
+  height: 50px;
+  left: -1px;
+  position: absolute;
+  top: 388px;
+  transform: rotate(-90deg);
+  width: 53px;
+}
+
+.home-page .rectangle-12 {
+  background-color: #e63a46;
+  border-radius: 5px;
+  height: 50px;
+  left: 54px;
+  position: absolute;
+  top: 457px;
+  transform: rotate(-90deg);
+  width: 53px;
+}
+
+.home-page .rectangle-13 {
+  background-color: #1d3557;
+  border-radius: 5px;
+  height: 50px;
+  left: 53px;
+  position: absolute;
+  top: 389px;
+  transform: rotate(-90deg);
+  width: 53px;
+}
+
+.home-page .rectangle-14 {
+  background-color: #1d3557;
+  border-radius: 5px;
+  height: 50px;
+  left: -1px;
+  position: absolute;
+  top: 455px;
+  transform: rotate(-90deg);
+  width: 53px;
+}
+
+.home-page .text-wrapper-14 {
+  color: #718ebfd1;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 36px;
+  font-weight: 400;
+  left: 171px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 1868px;
+  width: 1097px;
+}
+
+.home-page .overlap-10 {
+  background-size: 100% 100%;
+  height: 573px;
+  left: 0px;
+  position: absolute;
+  top: 0;
+  width: 1440px;
+}
+
+.home-page .text-wrapper-10 {
+  color: #fff;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 48px;
+  font-weight: 400;
+  left: 520px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 2030px;
+  width: 348px;
+}
+
+.home-page .MONSHAAT {
+  height: 300px;
+  left: 750px;
+  position: absolute;
+  top: 2090px;
+}
+
+.MONSHAAT {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  /* Smooth animation */
+}
+
+.MONSHAAT:hover {
+  transform: scale(1.1);
+  /* Enlarge image on hover */
+}
+
+.AWS {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  /* Smooth animation */
+}
+
+.AWS:hover {
+  transform: scale(1.1);
+  /* Enlarge image on hover */
+}
+
+.home-page .AWS {
+  height: 300px;
+  left: 250px;
+  position: absolute;
+  top: 2090px;
+}
+/* .scroll2 {
+  z-index: 10;
+  position: relative;
+} */
+
+.home-page .p {
+  color: #ffffff;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 610px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 3157px;
+  white-space: nowrap;
+}
+
+
+.home-page .button {
+  all: unset;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 52px;
+  box-shadow: 0px 10px 24px 1px #00000033;
+  box-sizing: border-box;
+  gap: 8px;
+  overflow: hidden;
+  padding: 15px 27px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.home-page .text-wrapper-8 {
+  color: #ffffff;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 700;
+  left: 80px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 42px;
+  white-space: nowrap;
+  width: 113px;
+}
+
+.overlap-2 {
+  border: transparent;
+  background-color: transparent;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.home-page .LeftArrow {
+  height: 32px;
+  left: 45px;
+  object-fit: cover;
+  position: absolute;
+  top: 39px;
+  width: 32px;
+}
+
+button.services-btn {
+  background-color: #e63a46;
+  height: 69px;
+  width: 222px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e3e3e3;
+  border-radius: 52px;
+  position: relative;
+  top: 500px;
+  left: 580px;
+  margin: 20px auto;
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+button.services-btn:hover {
+  background-color: #1d3557;
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
+
+button .text-wrapper12 {
+  color: #ffffff;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 24px;
+  font-weight: 500px;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
+}
+
+.clickable-text {
+    cursor: pointer; 
+    color: blue; 
+    z-index: 10; 
+    position: relative;
+    padding: 10px; 
+}
+
+.clickable-text {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clickable-text:hover {
+  color: #2a7fba;
+}
+
+
+section {
+  scroll-margin-top: 100px; /* Adjust based on your header height */
+}
+
+/* Navigation link styling */
+.clickable-text {
+  cursor: pointer;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.clickable-text:hover {
+  color: #2a7fba;
+}
+
+.clickable-text::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #2a7fba;
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.clickable-text:hover::after {
+  transform: scaleX(1);
+}
+/* Wrapper to allow smooth scrolling */
+.scroll {
+  z-index: 10;
+  scroll-snap-type: y mandatory; /* Enforces mandatory snapping when scrolling vertically */
+  overflow-y: scroll; /* Ensures vertical scrolling */
+  height: 100vh; /* Ensures the container fills the entire viewport */
+  display: flex;
+  flex-direction: column; /* Stacks children vertically */
+}
+
+/* Section settings */
+#partnersSection2, #faqSection2 {
+  scroll-snap-align: start; /* Aligns each section when scrolling */
+  width: 100%;
+  min-height: 100vh; /* Ensures sections take up the full height of the viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#faqSection2 {
+  padding-top: 20px; /* Optional space for content */
+  box-sizing: border-box; /* Includes padding in the width and height calculation */
+}
+

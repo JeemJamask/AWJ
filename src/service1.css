@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.service1-page {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+.back-button {
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+  width: 119px;
+  height: 71px;
+  background-color: transparent;
+  border: 1px solid #2d5080;
+  border-radius: 50px;
+  color: #2d5080;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "DIN Next LT Arabi", sans-serif;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: rgba(45, 80, 128, 0.1);
+  transform: scale(1.05);
+}
+
+.service1-icon {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  bottom: 120px;
+}
+
+.service2-icon {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  bottom: 120px;
+}
+
+.service1-page .text-wrapper {
+  color: #1d3557;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-weight: bold;
+  font-size: 54px;
+  font-weight: 400;
+  left: 695px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 120px;
+  width: 505px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.service1-page .text-wrapper-1 {
+  color: #1d3557;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-size: 26px;
+  font-weight: 400;
+  left: 690px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 190px;
+  width: 505px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.service1-rectangle {
+  position: relative;
+  top: 50px;
+  width: 350px;
+  height: 400px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  text-align: center;
+  padding: 20px 30px;
+}
+
+.service1-heading {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  font-weight: bold;
+  color: #1d3557;
+  font-family: "Tajawal-Regular", Helvetica;
+}
+
+.service1-description {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 18px;
+  line-height: 1.6;
+  color: #4a4a4a;
+  font-family: "Tajawal-Regular", Helvetica;
+  text-align: center;
+  width: 80%;
+}
+
+.create-account-button1 {
+  position: relative;
+  width: 175px;
+  height: 60px;
+  background-color: #e63a46;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  left: 3px;
+  top: 120px;
+  border-radius: 52px;
+  border: 1px solid #e3e3e3;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: "Tajawal-Regular", Helvetica;
+}
+
+.create-account-button1:hover {
+  background-color: #c32f3a;
+  transform: scale(1.05);
+}
+
+.service1-page .Logo {
+  height: 70px;
+  right: 20px;
+  position: absolute;
+  top: 15px;
+  width: 70px;
+}
+
+.BlueBox {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 250px;
+}
+
+.RedBlueBox {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 500px;
+}

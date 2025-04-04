@@ -1,0 +1,284 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  font-family: "Tajawal", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.create-account-page {
+  font-family: "Tajawal", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f5f5f5;
+  overflow: hidden;
+  position: relative;
+}
+
+.create-account-page .text-wrapper {
+  color: #1d3557;
+  direction: rtl;
+  font-family: "Tajawal-Regular", Helvetica;
+  font-weight: bold;
+  font-size: 54px;
+  font-weight: 400;
+  left: 695px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 120px;
+  width: 505px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.create-account-form {
+  font-family: "Tajawal", sans-serif;
+  width: 90%;
+  max-width: 834px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* 2-column layout */
+  gap: 15px;
+  direction: rtl;
+  box-sizing: border-box;
+  margin-top: 100px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group .label {
+  font-family: "Tajawal", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  font-family: "Tajawal", sans-serif;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #333;
+}
+
+.form-group input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.create-account-page .Logo {
+  height: 70px;
+  right: 20px;
+  position: absolute;
+  top: 15px;
+  width: 70px;
+}
+
+.BlueBox {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 250px;
+}
+
+.RedBlueBox {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 500px;
+}
+
+.company-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.company-buttons button {
+  position: relative;
+  font-family: "Tajawal", sans-serif;
+  top: 9px;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 15px;
+  width: 20%;
+  right: 80px;
+}
+
+.company-buttons button.selected {
+  background-color: #e63a46;
+  color: white;
+  border-color: #e63a46;
+}
+
+.terms {
+  font-family: "Tajawal", sans-serif;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  text-align: right;
+  width: 100%;
+  left: 64%;
+  top: 574px;
+}
+
+.terms2 {
+  font-family: "Tajawal", sans-serif;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  text-align: right;
+  width: 100%;
+  left: 64%;
+  top: 490px;
+}
+
+.create-account-page .submit-btn {
+  font-family: "Tajawal", sans-serif;
+  width: 12%;
+  padding: 18px;
+  border: none;
+  background-color: #e63a46;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-top: 60px;
+}
+
+.create-account-page .submit-btn {
+  width: 12%;
+  padding: 18px;
+  border: none;
+  background-color: #e63a46;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-top: 60px;
+}
+
+.login-link {
+  font-family: "Tajawal", sans-serif;
+  position: absolute;
+  right: 66%;
+  top: 565px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-link2 {
+  font-family: "Tajawal", sans-serif;
+  position: absolute;
+  right: 66%;
+  top: 485.5px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .create-account-form {
+    width: 90%;
+    height: auto;
+  }
+
+  .create-account-page .text-wrapper {
+    font-size: 30px;
+    top: 10%;
+  }
+
+  .create-account-page .submit-btn {
+    width: 100%;
+  }
+
+  .company-buttons button {
+    padding: 10px 20px;
+  }
+}
+
+.modal {
+  font-family: "Tajawal", sans-serif;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  height: 23%;
+  width: 350px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal input {
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Tajawal", sans-serif;
+  width: 300px;
+  text-align: center;
+}
+
+.modal button {
+  font-family: "Tajawal", sans-serif;
+  top: 23px;
+  position: relative;
+  padding: 10px 25px;
+  background-color: #234069;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background-color: #e63a46;
+}
+
+.required {
+  color: red;
+  font-weight: bold;
+}
+
+.terms input.required {
+  margin-right: 5px;
+}

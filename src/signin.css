@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "DIN Next LT Arabic", sans-serif;
+  overflow: auto;
+}
+
+.back-arrow-n {
+    position: absolute; /* Keeps it in a fixed position */
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #fff;
+    z-index: 1000; 
+    background: transparent; 
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.2s ease, color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.back-arrow-n:hover {
+    color:rgb(223, 233, 255);
+    transform: scale(1.1); 
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); 
+}
+
+
+.back-arrow-n:active {
+    transform: scale(0.9); /* Shrinks slightly when clicked for a "press" effect */
+}
+
+
+.sign-in-page {
+  background-color: #f8f7f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.sign-in-page .Logo {
+  height: 70px;
+  right: 20px;
+  position: absolute;
+  top: 15px;
+  width: 70px;
+}
+
+.sign-in-page .SideSqrs {
+  position: relative;
+  right: 320px;
+}
+
+.sign-in-box {
+  position: absolute;
+  top: 230px;
+  right: 150px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+  @apply md:w-96 sm:w-80; /* Width responsive: 24rem, 20rem */
+}
+
+/* Heading Style */
+.sign-in-box h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Label Style */
+.sign-in-box label {
+  font-family: "DIN Next LT Arabic", sans-serif;
+  position: relative;
+  direction: rtl;
+  left: 10px;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Input Field Style */
+.sign-in-box input {
+  font-family: 'Tajawal', sans-serif;
+  position: relative;
+  right: 9px;
+  width: 60%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  @apply sm:w-full; /* Full width on small screens */
+}
+
+/* Button Style */
+.sign-in-box button {
+  font-family: 'Tajawal', sans-serif;
+  width: 50%;
+  padding: 10px;
+  background-color: #E63A46;
+  border: 1px solid #fff;
+  border-color: white;
+  color: white;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: background 0.3s ease;
+  @apply sm:w-full; /* Full width on small screens */
+}
+
+/* Button Hover Effect */
+.sign-in-box button:hover {
+  background-color: #1D3557;
+}
+
+/* Login Link Style */
+.sign-in-page .login-link3 {
+  position: relative;
+  text-align: center;
+  right: -25.5%;
+  bottom: 360px;
+  margin-top: 30px;
+}
+
+.sign-in-page .login-link3 a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.sign-in-page .login-link3 a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design (Tailwind Utility for Responsiveness) */
+@media screen and (max-width: 640px) {
+  .sign-in-page .SideSqrs {
+    right: 0;
+    opacity: 0.1;
+  }
+
+  .sign-in-page .Logo {
+    height: 50px;
+    width: 50px;
+    top: 5px;
+  }
+
+  .sign-in-box {
+    top: 100px; /* Adjust box position for smaller screens */
+    right: 0;
+    padding: 20px;
+    width: 90%; /* Make box width more fluid */
+  }
+
+  .sign-in-page .login-link3 {
+    position: relative;
+    bottom: 320px;
+    right: 0;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 768px) {
+  .sign-in-page .SideSqrs {
+    right: 250px;
+  }
+
+  .sign-in-box {
+    width: 80%;
+    top: 180px;
+    right: 10px;
+  }
+
+  .sign-in-page .Logo {
+    width: 60px;
+    height: 60px;
+  }
+}
